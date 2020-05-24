@@ -1,5 +1,6 @@
 package com.example.todolist.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
@@ -16,6 +17,8 @@ import com.example.belajarroom.ui.main.NoteAdapter
 import com.example.belajarroom.ui.main.NoteViewModel
 import com.example.todolist.R
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,8 +58,12 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun showAlertDialogAdd() {
         val alert = AlertDialog.Builder(this)
+
+        val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
 
         val editText = EditText(applicationContext)
         editText.hint = "Enter your text"
@@ -66,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 
         alert.setPositiveButton("Save") { dialog, _ ->
             noteViewModel.insertNote(
-                    Note(note = editText.text.toString())
+                    Note(note = editText.text.toString(), waktubuat = "Note dibuat: $currentDate")
             )
             dialog.dismiss()
         }

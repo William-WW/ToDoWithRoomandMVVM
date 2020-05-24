@@ -7,6 +7,14 @@
     android:padding="10dp">
 
     <TextView
+        android:id="@+id/noteWaktuDibuat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/waktu_dibuat"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+    <TextView
         android:id="@+id/noteTV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

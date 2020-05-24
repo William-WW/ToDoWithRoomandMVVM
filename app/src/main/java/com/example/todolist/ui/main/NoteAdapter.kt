@@ -42,6 +42,7 @@ class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindItem(context: Context, note: Note, listener: (Note, Int) -> Unit) {
         itemView.noteTV.text = note.note
+        itemView.noteWaktuDibuat.text = note.waktubuat
         itemView.setOnClickListener {
             listener(note, layoutPosition)
         }
