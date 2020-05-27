@@ -1,10 +1,10 @@
-package com.example.belajarroom.ui.main
+package com.example.todolist.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.belajarroom.db.note.Note
-import com.example.belajarroom.db.note.NoteRepository
+import com.example.todolist.db.note.Note
+import com.example.todolist.db.note.NoteRepository
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -28,3 +28,4 @@ class NoteViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 }
+

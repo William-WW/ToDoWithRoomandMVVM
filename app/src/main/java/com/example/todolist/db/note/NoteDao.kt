@@ -1,7 +1,8 @@
-package com.example.belajarroom.db.note
+package com.example.todolist.db.note
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.todolist.db.note.Note
 
 @Dao
 interface NoteDao {

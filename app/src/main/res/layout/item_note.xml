@@ -1,25 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:background="@color/dark_gray">
 
     <TextView
-        android:id="@+id/noteWaktuDibuat"
+        android:id="@+id/waktu_buat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/waktu_dibuat"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/title_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:text="@string/waktu_dibuat"
-        android:textColor="@android:color/black"
+        android:text="@string/title"
+        android:singleLine="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/isi_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="@string/note"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tanggal_jatuh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/tanggaltempo"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/jatuh_tempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/waktutempo"
+        android:textAlignment="textEnd"
+        android:textColor="@android:color/white"
         android:textSize="14sp" />
     <TextView
-        android:id="@+id/noteTV"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="12dp"
-    android:text="@string/note"
-    android:textColor="@android:color/black"
-    android:textSize="14sp" />
-</LinearLayout>
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text="@string/delete"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"/>
+    </LinearLayout>
+</RelativeLayout>
