@@ -3,15 +3,14 @@ package com.example.todolist.ui
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.R
 import com.example.todolist.db.note.Note
 import com.example.todolist.intent.Constants
 import kotlinx.android.synthetic.main.activity_create.*
-import kotlinx.android.synthetic.main.item_note.*
 import java.text.SimpleDateFormat
 import java.util.*
 

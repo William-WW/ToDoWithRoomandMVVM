@@ -45,7 +45,7 @@ class CreateActivity : AppCompatActivity() {
         title = if (note != null) getString(R.string.edit) else getString(R.string.create_note)
     }
 
-    private fun saveNote() {
+    private fun saveNote(){
         val sdf = SimpleDateFormat("dd/M/yy HH:mm")
         val id = if (note != null) note?.id else null
         val note = Note(id = id,

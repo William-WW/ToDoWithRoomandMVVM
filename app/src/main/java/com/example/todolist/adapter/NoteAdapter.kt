@@ -48,11 +48,9 @@ class NoteAdapter(noteEvents: NoteEvents) : RecyclerView.Adapter<NoteAdapter.Tod
 
     class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(notes: Note, listener: MainActivity) {
-            val parsedWaktuBuat = SimpleDateFormat("dd/MM/yy", Locale.JAPAN).parse(notes.waktubuat) as Date
-            val waktubuat = formatDate(parsedWaktuBuat, "dd MMM yyyy")
+            val waktubuat = "Dibuat: " + notes.waktubuat
 
-            val parsedWaktuUpdate = SimpleDateFormat("dd/MM/yy", Locale.JAPAN).parse(notes.waktuupdate) as Date
-            val waktuupdate = "Diupdate: " + formatDate(parsedWaktuUpdate, "dd MMM yyyy")
+            val waktuupdate = "Diupdate: " + notes.waktuupdate
 
             itemView.waktu_buat.text = waktubuat
             itemView.waktu_update.text = waktuupdate
@@ -67,10 +65,6 @@ class NoteAdapter(noteEvents: NoteEvents) : RecyclerView.Adapter<NoteAdapter.Tod
             itemView.setOnClickListener {
                 listener.onViewClicked(notes)
             }
-        }
-
-        private fun formatDate(date: Date, format: String): String{
-            return date.toString(format)
         }
     }
 
@@ -113,10 +107,5 @@ class NoteAdapter(noteEvents: NoteEvents) : RecyclerView.Adapter<NoteAdapter.Tod
         fun onViewClicked(notes: Note)
     }
 
-}
-
-fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
-    val formatter = SimpleDateFormat(format, locale)
-    return formatter.format(this)
 }
 
