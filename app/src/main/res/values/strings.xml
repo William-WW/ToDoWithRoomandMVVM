@@ -13,4 +13,6 @@
     <string name="tanggaltempo">Tanggal Tempo</string>
     <string name="isiNote">Isi Note</string>
     <string name="add_note">Add Note</string>
+    <string name="waktu_update">Waktu Update</string>
+    <string name="sort">Sort By Deadline</string>
 </resources>

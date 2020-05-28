@@ -12,7 +12,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.note.ui.NoteAdapter
+import com.example.todolist.adapter.NoteAdapter
 import com.example.todolist.intent.Constants
 import com.example.todolist.R
 import com.example.todolist.db.note.Note
@@ -21,6 +21,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_isi.*
 
 class MainActivity : AppCompatActivity(), NoteAdapter.NoteEvents {
+
+    companion object{
+        var isSortByDateCreated = true
+    }
 
     private lateinit var noteViewModel: NoteViewModel
     private lateinit var searchView: SearchView
@@ -47,9 +51,19 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteEvents {
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.notes -> {
+                    isSortByDateCreated = true
+                    observeData()
+                    return@OnNavigationItemSelectedListener true
+                }
                 R.id.addmenu -> {
                     val intent = Intent(this@MainActivity, CreateActivity::class.java)
                     startActivityForResult(intent, Constants.INTENT_CREATE_NOTE)
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.sort -> {
+                    isSortByDateCreated = false
+                    observeData()
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -91,7 +105,6 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteEvents {
                 noteAdapter.filter.filter(newText)
                 return false
             }
-
         })
         return true
     }
@@ -99,11 +112,16 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteEvents {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.searchnote -> true
-
             else -> super.onOptionsItemSelected(item)
-        }
+            }
     }
 
+
+    private fun observeData(){
+        noteViewModel.getNotes()?.observe(this, Observer {
+            noteAdapter.setNotes(it)
+        })
+    }
 
     private fun resetListView() {
         if (!searchView.isIconified) {
@@ -123,7 +141,7 @@ class MainActivity : AppCompatActivity(), NoteAdapter.NoteEvents {
 
     override fun onViewClicked(notes: Note) {
         resetListView()
-        val intent = Intent(this@MainActivity, CreateActivity::class.java)
+        val intent = Intent(this@MainActivity, EditActivity::class.java)
         intent.putExtra(Constants.INTENT_OBJECT, notes)
         startActivityForResult(intent, Constants.INTENT_UPDATE_NOTE)
     }

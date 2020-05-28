@@ -3,11 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/notes"
+        android:icon="@drawable/ic_note"
         android:title="@string/note"/>
     <item
         android:id="@+id/addmenu"
+        android:icon="@drawable/ic_add"
         android:title="@string/add_note"/>
     <item
         android:id="@+id/sort"
-        android:title="Sort" />
+        android:icon="@drawable/ic_sort"
+        android:title="@string/sort"/>
 </menu>

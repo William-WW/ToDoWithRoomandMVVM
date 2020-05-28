@@ -17,12 +17,13 @@
         android:textStyle="bold"
         android:layout_marginTop="50dp"
         android:singleLine="true"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/editIsi"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="50dp"
         android:hint="@string/isiNote"
@@ -44,6 +45,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tanggaltempo"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:id="@+id/tanggal_tempo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:text="@string/waktutempo"
         android:textAlignment="center"
@@ -51,14 +62,5 @@
         android:textColor="@android:color/white"
         android:id="@+id/waktu_tempo"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/tanggaltempo"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:id="@+id/tanggal_tempo"/>
 
 </LinearLayout>

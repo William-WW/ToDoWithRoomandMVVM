@@ -18,6 +18,8 @@ data class Note(
     var note: String,
     @ColumnInfo(name = "waktubuat")
     var waktubuat: String,
+    @ColumnInfo(name = "waktuupdate")
+    var waktuupdate: String,
     @ColumnInfo(name = "tempo")
     val tempo: String,
     @ColumnInfo(name = "waktutempo")

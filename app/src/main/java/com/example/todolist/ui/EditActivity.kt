@@ -3,18 +3,19 @@ package com.example.todolist.ui
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.db.note.Note
 import com.example.todolist.R
+import com.example.todolist.db.note.Note
 import com.example.todolist.intent.Constants
 import kotlinx.android.synthetic.main.activity_create.*
+import kotlinx.android.synthetic.main.item_note.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CreateActivity : AppCompatActivity() {
+class EditActivity : AppCompatActivity() {
 
     private var note: Note? = null
     private var bulan: Int = 0
@@ -32,6 +33,7 @@ class CreateActivity : AppCompatActivity() {
         if (intent != null && intent.hasExtra(Constants.INTENT_OBJECT)) {
             val note: Note = intent.getParcelableExtra(Constants.INTENT_OBJECT)
             this.note = note
+            isiData(note)
         }
 
         tanggal_tempo.setOnClickListener {
@@ -45,23 +47,31 @@ class CreateActivity : AppCompatActivity() {
         title = if (note != null) getString(R.string.edit) else getString(R.string.create_note)
     }
 
+    private fun isiData(note: Note) {
+        editTitle.setText(note.title)
+        editIsi.setText(note.note)
+        tanggal_tempo.text = note.tempo
+        waktu_tempo.text = note.waktutempo
+    }
+
     private fun saveNote() {
         val sdf = SimpleDateFormat("dd/M/yy HH:mm")
         val id = if (note != null) note?.id else null
-        val note = Note(id = id,
-            title = editTitle.text.toString(),
-            note = editIsi.text.toString(),
-            tempo = tanggal_tempo.text.toString(),
-            waktutempo = waktu_tempo.text.toString(),
-            waktubuat = sdf.format(Date()),
-            waktuupdate = sdf.format(Date())
-        )
+        val note = note?.waktubuat?.let {
+            Note(id = id,
+                title = editTitle.text.toString(),
+                note = editIsi.text.toString(),
+                tempo = tanggal_tempo.text.toString(),
+                waktutempo = waktu_tempo.text.toString(),
+                waktubuat = it,
+                waktuupdate = sdf.format(Date())
+            )
+        }
         val intent = Intent()
         intent.putExtra(Constants.INTENT_OBJECT, note)
         setResult(RESULT_OK, intent)
         finish()
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val menuInflate = menuInflater
@@ -77,7 +87,6 @@ class CreateActivity : AppCompatActivity() {
         }
         return true
     }
-
 
     private fun showDatePickerDialog() {
         hari = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
